@@ -5,7 +5,6 @@
   <title>Encantos de Cristal - Tienda Online</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* --------- RESET BÁSICO --------- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,7 +13,7 @@
 
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #0b1a33 0%, #0c2f4b 35%, #f1f5f9 100%);
+      background: radial-gradient(circle at top, #0b1a33 0%, #0c2f4b 35%, #f1f5f9 100%);
       color: #1f2933;
       line-height: 1.5;
     }
@@ -29,12 +28,13 @@
       display: block;
     }
 
-    /* --------- ENCABEZADO / NAV --------- */
+    /* ---------- NAVBAR ---------- */
+
     header {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       backdrop-filter: blur(6px);
       color: #f9fafb;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
@@ -43,33 +43,37 @@
     .nav-container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0.75rem 1rem;
+      padding: 0.7rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .logo {
+    .logo-box {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    .logo-box img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .logo-text {
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    .logo-circle {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #f97316, #b91c1c);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fef9c3;
-      font-size: 0.8rem;
-      font-weight: 900;
+    .logo-text small {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: none;
+      font-weight: 400;
+      color: #cbd5f5;
     }
 
     nav ul {
@@ -90,11 +94,12 @@
       transform: translateY(-1px);
     }
 
-    /* --------- HERO --------- */
+    /* ---------- HERO ---------- */
+
     .hero {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 2.5rem 1rem 2rem;
+      padding: 2.3rem 1rem 2rem;
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
       gap: 2rem;
@@ -195,33 +200,13 @@
       overflow: hidden;
     }
 
-    .hero-image::before,
-    .hero-image::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(248, 250, 252, 0.12);
-      filter: blur(2px);
-    }
-
-    .hero-image::before {
-      width: 260px;
-      height: 260px;
-      top: -40px;
-      right: -70px;
-    }
-
-    .hero-image::after {
-      width: 220px;
-      height: 220px;
-      bottom: -60px;
-      left: -70px;
-    }
-
     .hero-main-img {
       position: relative;
       border-radius: 1rem;
       border: 3px solid rgba(254, 249, 195, 0.8);
+      object-fit: cover;
+      height: 260px;
+      width: 100%;
     }
 
     .hero-label {
@@ -267,7 +252,8 @@
       color: #fee2e2;
     }
 
-    /* --------- CONTENEDOR GENERAL DE SECCIONES --------- */
+    /* ---------- SECCIONES ---------- */
+
     main {
       background: radial-gradient(circle at top, #e0f2fe 0, #f9fafb 35%, #f3f4f6 100%);
       border-radius: 1.75rem 1.75rem 0 0;
@@ -306,7 +292,8 @@
       margin-bottom: 1.6rem;
     }
 
-    /* --------- QUIÉNES SOMOS --------- */
+    /* ---------- ABOUT ---------- */
+
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -331,10 +318,6 @@
       align-items: flex-start;
     }
 
-    .about-dot {
-      margin-top: 0.25rem;
-    }
-
     .about-card {
       border-radius: 1.2rem;
       background: linear-gradient(145deg, #fefce8, #fee2e2);
@@ -342,17 +325,6 @@
       box-shadow: 0 10px 24px rgba(148, 163, 184, 0.5);
       position: relative;
       overflow: hidden;
-    }
-
-    .about-card::after {
-      content: "Navidad";
-      position: absolute;
-      right: -40px;
-      bottom: -20px;
-      font-size: 2.9rem;
-      font-weight: 800;
-      color: rgba(248, 113, 113, 0.18);
-      transform: rotate(-18deg);
     }
 
     .about-stat-row {
@@ -375,7 +347,8 @@
       color: #b91c1c;
     }
 
-    /* --------- PRODUCTOS --------- */
+    /* ---------- PRODUCTOS ---------- */
+
     .products-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -497,7 +470,6 @@
       text-transform: uppercase;
     }
 
-    /* --------- SECCIÓN PROMO --------- */
     .promo-banner {
       margin-top: 1.8rem;
       border-radius: 1.4rem;
@@ -513,17 +485,6 @@
       overflow: hidden;
     }
 
-    .promo-banner::after {
-      content: "50% OFF";
-      position: absolute;
-      right: -25px;
-      bottom: -20px;
-      font-size: 3rem;
-      font-weight: 900;
-      color: rgba(127, 29, 29, 0.16);
-      transform: rotate(-10deg);
-    }
-
     .promo-main {
       font-size: 1.35rem;
       font-weight: 800;
@@ -535,7 +496,8 @@
       max-width: 500px;
     }
 
-    /* --------- IMPACTO --------- */
+    /* ---------- IMPACTO ---------- */
+
     .impact-grid {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 2fr);
@@ -550,7 +512,6 @@
 
     .impact-list {
       list-style: none;
-      margin-left: 0;
       font-size: 0.95rem;
     }
 
@@ -570,11 +531,6 @@
       font-size: 0.9rem;
     }
 
-    .impact-card h3 {
-      margin-bottom: 0.4rem;
-      font-size: 1.05rem;
-    }
-
     .impact-stats {
       margin-top: 0.6rem;
       display: flex;
@@ -589,7 +545,8 @@
       border-radius: 999px;
     }
 
-    /* --------- CONTACTO --------- */
+    /* ---------- CONTACTO ---------- */
+
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -639,7 +596,8 @@
       box-shadow: 0 14px 32px rgba(185, 28, 28, 0.45);
     }
 
-    /* --------- FOOTER --------- */
+    /* ---------- FOOTER ---------- */
+
     footer {
       background: #0b1120;
       color: #e5e7eb;
@@ -657,7 +615,8 @@
       gap: 0.75rem;
     }
 
-    /* --------- WHATSAPP FLOTANTE --------- */
+    /* ---------- WHATSAPP FLOTANTE ---------- */
+
     .whatsapp-float {
       position: fixed;
       right: 18px;
@@ -716,11 +675,15 @@
   <!-- HEADER -->
   <header>
     <div class="nav-container">
-      <div class="logo">
-        <div class="logo-circle">EC</div>
-        <div>
+      <div class="logo-box">
+        <!-- Si el logo transparente no se ve, cambia el nombre del archivo aquí -->
+        <img
+          src="Imagen_de_WhatsApp_2025-11-30_a_las_23.13.07_1d23f0ad-removebg-preview.png"
+          alt="Logo Encantos de Cristal"
+        />
+        <div class="logo-text">
           <div>Encantos de Cristal</div>
-          <small style="font-weight: 400; font-size: 0.7rem;">Arte en botellas recicladas</small>
+          <small>Arte en botellas recicladas</small>
         </div>
       </div>
       <nav>
@@ -763,10 +726,10 @@
     </div>
 
     <div class="hero-image">
-      <!-- USA AQUÍ UNA FOTO GENERAL DE VARIAS BOTELLAS NAVIDEÑAS -->
+      <!-- Portada: arbolito de navidad -->
       <img
-        src="img/portada-botellas-navidad.jpg"
-        alt="Botellas de vidrio decoradas con luces y temática navideña"
+        src="Imagen de WhatsApp 2025-11-30 a las 23.11.47_c244c775.jpg"
+        alt="Portada navideña Encantos de Cristal"
         class="hero-main-img"
       />
       <div class="hero-label">
@@ -787,7 +750,6 @@
     </div>
   </section>
 
-  <!-- CUERPO PRINCIPAL -->
   <main>
     <!-- QUIÉNES SOMOS -->
     <section class="section" id="nosotros">
@@ -805,19 +767,19 @@
         <div>
           <ul class="about-list">
             <li>
-              <span class="about-dot">✨</span>
+              <span>✨</span>
               <span>Botellas recicladas convertidas en arte luminoso para tu hogar, negocio o eventos.</span>
             </li>
             <li>
-              <span class="about-dot">🎄</span>
+              <span>🎄</span>
               <span>Diseños navideños con detalles en cintas, ramas, nieve artificial y más.</span>
             </li>
             <li>
-              <span class="about-dot">💡</span>
+              <span>💡</span>
               <span>Luces incorporadas que crean ambientes mágicos en la noche.</span>
             </li>
             <li>
-              <span class="about-dot">🎨</span>
+              <span>🎨</span>
               <span>Personalización con nombres, mensajes especiales y combinaciones de colores.</span>
             </li>
           </ul>
@@ -858,18 +820,57 @@
         <span>Botellas con luces listas para regalar o decorar.</span>
       </h2>
       <p class="section-intro">
-        Elige el nivel de detalle que prefieras y personaliza tu botella. Puedes usar estos modelos
-        como referencia y escribirnos por WhatsApp para adaptar colores, nombres y mensajes.
+        Elige el nivel de detalle que prefieras y personaliza tu botella. Estas fotos son ejemplos
+        de diseños que puedes encargar o adaptar a tu estilo.
       </p>
 
       <div class="products-grid">
-        <!-- PRODUCTO INTERMEDIO 1 -->
+        <!-- INTERMEDIO 1 -->
         <article class="product-card">
           <div class="product-img-wrapper">
-            <!-- REEMPLAZA img/botella1.jpg POR LA FOTO DE UNA BOTELLA INTERMEDIA -->
             <img
-              src="img/botella-intermedio-azul.jpg"
-              alt="Botella navideña azul con luces y diseño intermedio"
+              src="Custom set of 2 Christmas light-up wine bottles….jpg"
+              alt="Botellas navideñas con luces, nivel intermedio"
+            />
+            <div class="ribbon">Intermedio</div>
+          </div>
+          <div class="product-body">
+            <div class="product-header">
+              <div class="product-name">Doble Espíritu Navideño</div>
+              <div class="product-price">
+                S/ 40 - 55
+                <span>Precio sugerido</span>
+              </div>
+            </div>
+            <p class="product-details">
+              Set de botellas recicladas con siluetas navideñas y luces cálidas interiores. Ideal
+              para mesas, repisas y regalos corporativos.
+            </p>
+            <ul class="product-features">
+              <li>• Diseño elaborado y elegante.</li>
+              <li>• Dulces de mejor calidad en el interior (opcional).</li>
+              <li>• Personalización básica con nombre o mensaje corto.</li>
+            </ul>
+            <div class="product-footer">
+              <span class="promo-pill">Hecho a mano 🎁</span>
+              <a
+                class="btn btn-primary"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20el%20modelo%20Doble%20Esp%C3%ADritu%20Navide%C3%B1o"
+                target="_blank"
+                rel="noopener"
+              >
+                Pedir este modelo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- INTERMEDIO 2 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <img
+              src="Repurpose a used wine bottle by painting it in a….jpg"
+              alt="Botella navideña pintada con árboles nevados"
             />
             <div class="ribbon">Intermedio</div>
           </div>
@@ -882,59 +883,19 @@
               </div>
             </div>
             <p class="product-details">
-              Botella reciclada con diseño de bosque nevado, luces cálidas internas y lazo
-              decorativo. Ideal para mesas, repisas y regalos corporativos.
-            </p>
-            <ul class="product-features">
-              <li>• Diseño elaborado y elegante.</li>
-              <li>• Dulces de mejor calidad en el interior (opcional).</li>
-              <li>• Personalización básica con nombre o mensaje corto.</li>
-            </ul>
-            <div class="product-footer">
-              <span class="promo-pill">Hecho a mano 🎁</span>
-              <a
-                class="btn btn-primary"
-                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20una%20botella%20Intermedio%20Bosque%20Nevado%20Azul"
-                target="_blank"
-                rel="noopener"
-              >
-                Pedir modelo Intermedio
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PRODUCTO INTERMEDIO 2 -->
-        <article class="product-card">
-          <div class="product-img-wrapper">
-            <img
-              src="img/botella-intermedio-roja.jpg"
-              alt="Botella navideña roja con luces y decoración intermedia"
-            />
-            <div class="ribbon">Intermedio</div>
-          </div>
-          <div class="product-body">
-            <div class="product-header">
-              <div class="product-name">Renos Brillantes</div>
-              <div class="product-price">
-                S/ 40 - 55
-                <span>Precio sugerido</span>
-              </div>
-            </div>
-            <p class="product-details">
-              Botella con renos y estrellas doradas, combinada con luces blancas y detalles en
-              cinta roja navideña.
+              Botella pintada a mano con paisaje nevado y detalles brillantes. Perfecta para dar un
+              toque elegante y diferente a tu decoración.
             </p>
             <ul class="product-features">
               <li>• Perfecta para centros de mesa.</li>
               <li>• Incluye pequeña tarjeta para dedicatoria.</li>
-              <li>• Opción de colores verde, rojo o dorado.</li>
+              <li>• Opción de colores azul, verde o dorado.</li>
             </ul>
             <div class="product-footer">
-              <span class="promo-pill">EDICIÓN NAVIDAD</span>
+              <span class="promo-pill">Edición especial</span>
               <a
                 class="btn btn-primary"
-                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20una%20botella%20Intermedio%20Renos%20Brillantes"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20el%20modelo%20Bosque%20Nevado%20Azul"
                 target="_blank"
                 rel="noopener"
               >
@@ -944,38 +905,37 @@
           </div>
         </article>
 
-        <!-- PRODUCTO PREMIUM 1 -->
+        <!-- PREMIUM 1 -->
         <article class="product-card">
           <div class="product-img-wrapper">
-            <!-- REEMPLAZA POR LA FOTO DE UNA BOTELLA PREMIUM -->
             <img
-              src="img/botella-premium-forest.jpg"
-              alt="Botella navideña premium con bosque iluminado"
+              src="Imagen de WhatsApp 2025-11-30 a las 23.11.23_13f50df0.jpg"
+              alt="Botella transparente con reno y luces LED"
             />
             <div class="ribbon">Premium</div>
           </div>
           <div class="product-body">
             <div class="product-header">
-              <div class="product-name">Bosque Encantado Premium</div>
+              <div class="product-name">Reno de Luz Premium</div>
               <div class="product-price">
                 S/ 60 - 80
                 <span>Precio sugerido</span>
               </div>
             </div>
             <p class="product-details">
-              Botella con decoración detallada de pinos nevados, luces LED internas y adornos
-              exteriores de ramas y bayas. Presentación especial en caja de regalo.
+              Botella transparente con diseño de reno y paisaje montañoso, iluminada con luces LED
+              frías para un efecto mágico.
             </p>
             <ul class="product-features">
               <li>• Personalización completa (nombres, fechas, mensajes largos).</li>
               <li>• Incluye empaque premium para regalo.</li>
-              <li>• Ideal para obsequios de aniversario, Navidad y decoración principal.</li>
+              <li>• Ideal para mesa principal o sala.</li>
             </ul>
             <div class="product-footer">
               <span class="promo-pill">SUPER PROMO 50%</span>
               <a
                 class="btn btn-primary"
-                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20me%20interesa%20el%20Bosque%20Encantado%20Premium"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20me%20interesa%20el%20Reno%20de%20Luz%20Premium"
                 target="_blank"
                 rel="noopener"
               >
@@ -985,37 +945,37 @@
           </div>
         </article>
 
-        <!-- PRODUCTO PREMIUM 2 -->
+        <!-- PREMIUM 2 -->
         <article class="product-card">
           <div class="product-img-wrapper">
             <img
-              src="img/botella-premium-nacimiento.jpg"
-              alt="Botella navideña premium con nacimiento y luces"
+              src="95115e5425c59fd606afa5aa8dc6505c.jpg"
+              alt="Botellas con luces de colores en la arena"
             />
             <div class="ribbon">Premium</div>
           </div>
           <div class="product-body">
             <div class="product-header">
-              <div class="product-name">Noche de Paz</div>
+              <div class="product-name">Constelación de Colores</div>
               <div class="product-price">
                 S/ 60 - 80
                 <span>Precio sugerido</span>
               </div>
             </div>
             <p class="product-details">
-              Botella decorada con escena de nacimiento o villancicos, luces cálidas y detalles
-              metálicos. Perfecta para un rincón especial en tu sala.
+              Botellas delgadas con micro luces multicolor, perfectas para crear una fila de luz
+              navideña sobre la mesa, bar o vitrina.
             </p>
             <ul class="product-features">
-              <li>• Personalización de nombres de familia o frases bíblicas.</li>
-              <li>• Incluye tarjeta con mensaje especial.</li>
-              <li>• Se puede combinar con otras botellas para un set navideño.</li>
+              <li>• Se puede vender por unidad o en set.</li>
+              <li>• Combinación de luces cálidas y frías.</li>
+              <li>• Ideal para eventos y sesiones de fotos.</li>
             </ul>
             <div class="product-footer">
               <span class="promo-pill">Edición limitada</span>
               <a
                 class="btn btn-primary"
-                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20el%20modelo%20Premium%20Noche%20de%20Paz"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20el%20set%20Constelaci%C3%B3n%20de%20Colores"
                 target="_blank"
                 rel="noopener"
               >
@@ -1026,7 +986,7 @@
         </article>
       </div>
 
-      <!-- BANNER SUPER PROMO -->
+      <!-- BANNER PROMO -->
       <div class="promo-banner">
         <div class="promo-main">¡SUPER PROMO NAVIDEÑA 50% OFF!</div>
         <div class="promo-text">
@@ -1133,10 +1093,10 @@
         </div>
 
         <div class="contact-img">
-          <!-- USA UNA FOTO DE UNA BOTELLA ENCENDIDA EN UN AMBIENTE NAVIDEÑO -->
+          <!-- Foto ambiente navideño con árbol -->
           <img
-            src="img/botella-contacto.jpg"
-            alt="Botella de Encantos de Cristal iluminando un ambiente navideño"
+            src="Imagen de WhatsApp 2025-11-30 a las 23.11.47_43e18a49.jpg"
+            alt="Ambiente navideño con árbol y luces"
           />
         </div>
       </div>
