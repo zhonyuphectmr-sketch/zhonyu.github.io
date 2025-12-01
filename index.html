@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Encantos de Cristal - Tienda Online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* --------- RESET BÁSICO --------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #0b1a33 0%, #0c2f4b 35%, #f1f5f9 100%);
+      color: #1f2933;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* --------- ENCABEZADO / NAV --------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(6px);
+      color: #f9fafb;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .logo-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #f97316, #b91c1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fef9c3;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    nav li a {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    nav li a:hover {
+      background: rgba(254, 249, 195, 0.2);
+      transform: translateY(-1px);
+    }
+
+    /* --------- HERO --------- */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2rem;
+      color: #f9fafb;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      text-transform: uppercase;
+      color: #fee2e2;
+      text-shadow: 0 3px 0 #b91c1c;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-weight: 600;
+      color: #bfdbfe;
+      margin-bottom: 1rem;
+    }
+
+    .hero-tagline {
+      font-style: italic;
+      color: #fef9c3;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(15, 118, 110, 0.9);
+      color: #ecfeff;
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.3rem;
+      cursor: pointer;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      color: #ecfdf5;
+      box-shadow: 0 5px 12px rgba(21, 128, 61, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 7px 16px rgba(21, 128, 61, 0.9);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(248, 250, 252, 0.6);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(148, 163, 184, 0.25);
+    }
+
+    .hero-image {
+      position: relative;
+      padding: 1.25rem;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at top, #f97316, #b91c1c);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .hero-image::before,
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(248, 250, 252, 0.12);
+      filter: blur(2px);
+    }
+
+    .hero-image::before {
+      width: 260px;
+      height: 260px;
+      top: -40px;
+      right: -70px;
+    }
+
+    .hero-image::after {
+      width: 220px;
+      height: 220px;
+      bottom: -60px;
+      left: -70px;
+    }
+
+    .hero-main-img {
+      position: relative;
+      border-radius: 1rem;
+      border: 3px solid rgba(254, 249, 195, 0.8);
+    }
+
+    .hero-label {
+      position: absolute;
+      left: 1.5rem;
+      bottom: 1.2rem;
+      background: rgba(15, 23, 42, 0.9);
+      color: #f9fafb;
+      padding: 0.5rem 0.9rem;
+      border-radius: 0.9rem;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-label span:first-child {
+      font-weight: 700;
+      color: #bbf7d0;
+    }
+
+    .snow-row {
+      margin-top: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .snow-item {
+      flex: 1;
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.78);
+      padding: 0.5rem;
+      font-size: 0.7rem;
+      color: #e5e7eb;
+      text-align: center;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+    }
+
+    .snow-item strong {
+      display: block;
+      color: #fee2e2;
+    }
+
+    /* --------- CONTENEDOR GENERAL DE SECCIONES --------- */
+    main {
+      background: radial-gradient(circle at top, #e0f2fe 0, #f9fafb 35%, #f3f4f6 100%);
+      border-radius: 1.75rem 1.75rem 0 0;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.2rem 1rem;
+    }
+
+    .section-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.5rem;
+      color: #b91c1c;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .section-title span {
+      font-size: 1rem;
+      color: #0f172a;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 500;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      color: #1f2937;
+      margin-bottom: 1.6rem;
+    }
+
+    /* --------- QUIÉNES SOMOS --------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .about-dot {
+      margin-top: 0.25rem;
+    }
+
+    .about-card {
+      border-radius: 1.2rem;
+      background: linear-gradient(145deg, #fefce8, #fee2e2);
+      padding: 1.2rem;
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::after {
+      content: "Navidad";
+      position: absolute;
+      right: -40px;
+      bottom: -20px;
+      font-size: 2.9rem;
+      font-weight: 800;
+      color: rgba(248, 113, 113, 0.18);
+      transform: rotate(-18deg);
+    }
+
+    .about-stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    .about-stat {
+      flex: 1;
+      padding: 0.7rem;
+      border-radius: 0.9rem;
+      background: rgba(239, 68, 68, 0.06);
+    }
+
+    .about-stat strong {
+      display: block;
+      color: #b91c1c;
+    }
+
+    /* --------- PRODUCTOS --------- */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    @media (max-width: 800px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 1.4rem;
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.25);
+      border: 1px solid #fee2e2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-img-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img-wrapper img {
+      height: 210px;
+      object-fit: cover;
+      width: 100%;
+      transition: transform 0.7s;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .ribbon {
+      position: absolute;
+      top: 12px;
+      left: -36px;
+      background: linear-gradient(90deg, #f97316, #b91c1c);
+      color: #fef9c3;
+      padding: 0.25rem 2.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transform: rotate(-20deg);
+      box-shadow: 0 6px 16px rgba(248, 113, 113, 0.6);
+    }
+
+    .product-body {
+      padding: 1rem 1.15rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #b91c1c;
+    }
+
+    .product-price {
+      text-align: right;
+      font-weight: 700;
+      color: #15803d;
+    }
+
+    .product-price span {
+      display: block;
+      font-size: 0.75rem;
+      color: #4b5563;
+      font-weight: 400;
+    }
+
+    .product-details {
+      font-size: 0.9rem;
+      color: #374151;
+      margin-bottom: 0.7rem;
+    }
+
+    .product-features {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0.9rem;
+    }
+
+    .product-features li {
+      margin-bottom: 0.25rem;
+    }
+
+    .product-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .promo-pill {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-radius: 999px;
+      padding: 0.22rem 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* --------- SECCIÓN PROMO --------- */
+    .promo-banner {
+      margin-top: 1.8rem;
+      border-radius: 1.4rem;
+      padding: 1.4rem 1.2rem;
+      background: radial-gradient(circle at left, #fef9c3, #f97316);
+      color: #7f1d1d;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 16px 32px rgba(248, 113, 113, 0.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-banner::after {
+      content: "50% OFF";
+      position: absolute;
+      right: -25px;
+      bottom: -20px;
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(127, 29, 29, 0.16);
+      transform: rotate(-10deg);
+    }
+
+    .promo-main {
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .promo-text {
+      font-size: 0.9rem;
+      max-width: 500px;
+    }
+
+    /* --------- IMPACTO --------- */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 2fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .impact-list {
+      list-style: none;
+      margin-left: 0;
+      font-size: 0.95rem;
+    }
+
+    .impact-list li {
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .impact-card {
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.1rem;
+      background: linear-gradient(135deg, #0f766e, #22c55e);
+      color: #ecfdf5;
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.6);
+      font-size: 0.9rem;
+    }
+
+    .impact-card h3 {
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+    }
+
+    .impact-stats {
+      margin-top: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .impact-pill {
+      background: rgba(15, 23, 42, 0.2);
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+    }
+
+    /* --------- CONTACTO --------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 800px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card {
+      border-radius: 1.4rem;
+      padding: 1.2rem 1.3rem;
+      background: #ffffff;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.18);
+      border: 1px solid #e5e7eb;
+      font-size: 0.95rem;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.05rem;
+      color: #b91c1c;
+    }
+
+    .contact-row {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tagline-bottom {
+      margin-top: 1.2rem;
+      font-style: italic;
+      color: #0f172a;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .contact-img {
+      border-radius: 1.1rem;
+      overflow: hidden;
+      border: 3px solid #fecaca;
+      box-shadow: 0 14px 32px rgba(185, 28, 28, 0.45);
+    }
+
+    /* --------- FOOTER --------- */
+    footer {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 1.3rem 1rem 2rem;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* --------- WHATSAPP FLOTANTE --------- */
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ecfdf5;
+      font-size: 1.8rem;
+      box-shadow: 0 10px 22px rgba(34, 197, 94, 0.7);
+      z-index: 30;
+      cursor: pointer;
+      transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-2px) scale(1.03);
+      background: #16a34a;
+      box-shadow: 0 14px 26px rgba(22, 163, 74, 0.9);
+    }
+
+    .whatsapp-float span {
+      position: absolute;
+      right: 60px;
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.35rem 0.7rem;
+      border-radius: 0.6rem;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 480px) {
+      .whatsapp-float span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20hacer%20un%20pedido%20navide%C3%B1o"
+    target="_blank"
+    rel="noopener"
+  >
+    ☎
+    <span>Haz tu pedido por WhatsApp</span>
+  </a>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-circle">EC</div>
+        <div>
+          <div>Encantos de Cristal</div>
+          <small style="font-weight: 400; font-size: 0.7rem;">Arte en botellas recicladas</small>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#impacto">Impacto</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-text">
+      <h1>¡Encantos de Cristal!</h1>
+      <p class="hero-subtitle">Decoraciones navideñas en botellas de vidrio con luces.</p>
+      <p class="hero-tagline">
+        “Cada botella guarda una historia, cada luz enciende una sonrisa”.
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge">♻ Botellas recicladas</span>
+        <span class="badge">✨ Hecho a mano en Perú</span>
+        <span class="badge">🎄 Edición navideña</span>
+      </div>
+
+      <div class="hero-actions">
+        <a
+          class="btn btn-primary"
+          href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20cotizar%20una%20botella%20navide%C3%B1a"
+          target="_blank"
+          rel="noopener"
+        >
+          Pedir por WhatsApp
+        </a>
+        <a href="#productos" class="btn btn-ghost">Ver catálogo navideño</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <!-- USA AQUÍ UNA FOTO GENERAL DE VARIAS BOTELLAS NAVIDEÑAS -->
+      <img
+        src="img/portada-botellas-navidad.jpg"
+        alt="Botellas de vidrio decoradas con luces y temática navideña"
+        class="hero-main-img"
+      />
+      <div class="hero-label">
+        <span>Más de 100 botellas recicladas</span>
+        <span>+150 hogares iluminados estas fiestas</span>
+      </div>
+
+      <div class="snow-row">
+        <div class="snow-item">
+          <strong>Diseños únicos</strong>
+          No hay dos botellas iguales, cada una se personaliza con tu historia.
+        </div>
+        <div class="snow-item">
+          <strong>Listas para regalo</strong>
+          Incluyen decoración especial y presentación perfecta para sorprender.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUERPO PRINCIPAL -->
+  <main>
+    <!-- QUIÉNES SOMOS -->
+    <section class="section" id="nosotros">
+      <h2 class="section-title">
+        🎁 ¿Quiénes somos?
+        <span>Un emprendimiento artesanal con espíritu navideño.</span>
+      </h2>
+      <p class="section-intro">
+        Encantos de Cristal es un emprendimiento artesanal que transforma botellas recicladas en
+        decoraciones navideñas con luces. Creamos piezas únicas que llenan de calidez tus espacios
+        mientras cuidamos el planeta.
+      </p>
+
+      <div class="about-grid">
+        <div>
+          <ul class="about-list">
+            <li>
+              <span class="about-dot">✨</span>
+              <span>Botellas recicladas convertidas en arte luminoso para tu hogar, negocio o eventos.</span>
+            </li>
+            <li>
+              <span class="about-dot">🎄</span>
+              <span>Diseños navideños con detalles en cintas, ramas, nieve artificial y más.</span>
+            </li>
+            <li>
+              <span class="about-dot">💡</span>
+              <span>Luces incorporadas que crean ambientes mágicos en la noche.</span>
+            </li>
+            <li>
+              <span class="about-dot">🎨</span>
+              <span>Personalización con nombres, mensajes especiales y combinaciones de colores.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <strong>Niveles de producto & precios sugeridos:</strong>
+          <div style="margin-top: 0.6rem; font-size: 0.9rem;">
+            <p><strong>Intermedio</strong></p>
+            <p>• Botella con diseño elaborado, dulces de mejor calidad y personalización básica.</p>
+            <p>• Precio sugerido: <strong>S/ 40 - 55</strong></p>
+
+            <br />
+
+            <p><strong>Premium</strong></p>
+            <p>• Botella con decoración detallada, personalización completa y presentación especial.</p>
+            <p>• Precio sugerido: <strong>S/ 60 - 80</strong></p>
+          </div>
+
+          <div class="about-stat-row">
+            <div class="about-stat">
+              <strong>♻ Cuidado ambiental</strong>
+              Reducimos residuos de vidrio dando nueva vida a cada botella.
+            </div>
+            <div class="about-stat">
+              <strong>🎭 Arte local</strong>
+              Impulsamos el talento y la artesanía de nuestro entorno.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="section" id="productos">
+      <h2 class="section-title">
+        🎄 Catálogo navideño
+        <span>Botellas con luces listas para regalar o decorar.</span>
+      </h2>
+      <p class="section-intro">
+        Elige el nivel de detalle que prefieras y personaliza tu botella. Puedes usar estos modelos
+        como referencia y escribirnos por WhatsApp para adaptar colores, nombres y mensajes.
+      </p>
+
+      <div class="products-grid">
+        <!-- PRODUCTO INTERMEDIO 1 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <!-- REEMPLAZA img/botella1.jpg POR LA FOTO DE UNA BOTELLA INTERMEDIA -->
+            <img
+              src="img/botella-intermedio-azul.jpg"
+              alt="Botella navideña azul con luces y diseño intermedio"
+            />
+            <div class="ribbon">Intermedio</div>
+          </div>
+          <div class="product-body">
+            <div class="product-header">
+              <div class="product-name">Bosque Nevado Azul</div>
+              <div class="product-price">
+                S/ 40 - 55
+                <span>Precio sugerido</span>
+              </div>
+            </div>
+            <p class="product-details">
+              Botella reciclada con diseño de bosque nevado, luces cálidas internas y lazo
+              decorativo. Ideal para mesas, repisas y regalos corporativos.
+            </p>
+            <ul class="product-features">
+              <li>• Diseño elaborado y elegante.</li>
+              <li>• Dulces de mejor calidad en el interior (opcional).</li>
+              <li>• Personalización básica con nombre o mensaje corto.</li>
+            </ul>
+            <div class="product-footer">
+              <span class="promo-pill">Hecho a mano 🎁</span>
+              <a
+                class="btn btn-primary"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20una%20botella%20Intermedio%20Bosque%20Nevado%20Azul"
+                target="_blank"
+                rel="noopener"
+              >
+                Pedir modelo Intermedio
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO INTERMEDIO 2 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <img
+              src="img/botella-intermedio-roja.jpg"
+              alt="Botella navideña roja con luces y decoración intermedia"
+            />
+            <div class="ribbon">Intermedio</div>
+          </div>
+          <div class="product-body">
+            <div class="product-header">
+              <div class="product-name">Renos Brillantes</div>
+              <div class="product-price">
+                S/ 40 - 55
+                <span>Precio sugerido</span>
+              </div>
+            </div>
+            <p class="product-details">
+              Botella con renos y estrellas doradas, combinada con luces blancas y detalles en
+              cinta roja navideña.
+            </p>
+            <ul class="product-features">
+              <li>• Perfecta para centros de mesa.</li>
+              <li>• Incluye pequeña tarjeta para dedicatoria.</li>
+              <li>• Opción de colores verde, rojo o dorado.</li>
+            </ul>
+            <div class="product-footer">
+              <span class="promo-pill">EDICIÓN NAVIDAD</span>
+              <a
+                class="btn btn-primary"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20una%20botella%20Intermedio%20Renos%20Brillantes"
+                target="_blank"
+                rel="noopener"
+              >
+                Reservar ahora
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO PREMIUM 1 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <!-- REEMPLAZA POR LA FOTO DE UNA BOTELLA PREMIUM -->
+            <img
+              src="img/botella-premium-forest.jpg"
+              alt="Botella navideña premium con bosque iluminado"
+            />
+            <div class="ribbon">Premium</div>
+          </div>
+          <div class="product-body">
+            <div class="product-header">
+              <div class="product-name">Bosque Encantado Premium</div>
+              <div class="product-price">
+                S/ 60 - 80
+                <span>Precio sugerido</span>
+              </div>
+            </div>
+            <p class="product-details">
+              Botella con decoración detallada de pinos nevados, luces LED internas y adornos
+              exteriores de ramas y bayas. Presentación especial en caja de regalo.
+            </p>
+            <ul class="product-features">
+              <li>• Personalización completa (nombres, fechas, mensajes largos).</li>
+              <li>• Incluye empaque premium para regalo.</li>
+              <li>• Ideal para obsequios de aniversario, Navidad y decoración principal.</li>
+            </ul>
+            <div class="product-footer">
+              <span class="promo-pill">SUPER PROMO 50%</span>
+              <a
+                class="btn btn-primary"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20me%20interesa%20el%20Bosque%20Encantado%20Premium"
+                target="_blank"
+                rel="noopener"
+              >
+                Cotizar Premium
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCTO PREMIUM 2 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            <img
+              src="img/botella-premium-nacimiento.jpg"
+              alt="Botella navideña premium con nacimiento y luces"
+            />
+            <div class="ribbon">Premium</div>
+          </div>
+          <div class="product-body">
+            <div class="product-header">
+              <div class="product-name">Noche de Paz</div>
+              <div class="product-price">
+                S/ 60 - 80
+                <span>Precio sugerido</span>
+              </div>
+            </div>
+            <p class="product-details">
+              Botella decorada con escena de nacimiento o villancicos, luces cálidas y detalles
+              metálicos. Perfecta para un rincón especial en tu sala.
+            </p>
+            <ul class="product-features">
+              <li>• Personalización de nombres de familia o frases bíblicas.</li>
+              <li>• Incluye tarjeta con mensaje especial.</li>
+              <li>• Se puede combinar con otras botellas para un set navideño.</li>
+            </ul>
+            <div class="product-footer">
+              <span class="promo-pill">Edición limitada</span>
+              <a
+                class="btn btn-primary"
+                href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20el%20modelo%20Premium%20Noche%20de%20Paz"
+                target="_blank"
+                rel="noopener"
+              >
+                Encargar ahora
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- BANNER SUPER PROMO -->
+      <div class="promo-banner">
+        <div class="promo-main">¡SUPER PROMO NAVIDEÑA 50% OFF!</div>
+        <div class="promo-text">
+          Lleva tu botella desde el nivel Intermedio y recibe <strong>descuento especial</strong> en
+          tu siguiente compra o en la segunda botella del mismo pedido.
+          <br />
+          <strong>Disponible por tiempo limitado.</strong> Escríbenos por WhatsApp para verificar
+          stock y promociones activas.
+        </div>
+        <a
+          class="btn btn-primary"
+          href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20aprovechar%20la%20SUPER%20PROMO%2050%%20navide%C3%B1a"
+          target="_blank"
+          rel="noopener"
+        >
+          Quiero la super promo 🎅
+        </a>
+      </div>
+    </section>
+
+    <!-- IMPACTO POSITIVO -->
+    <section class="section" id="impacto">
+      <h2 class="section-title">
+        ♻ Impacto positivo
+        <span>Decoración que ilumina y también cuida el planeta.</span>
+      </h2>
+
+      <div class="impact-grid">
+        <div>
+          <ul class="impact-list">
+            <li>
+              <strong>1.</strong>
+              <span><strong>Reducimos residuos de vidrio</strong> al reutilizar botellas que habrían sido desechadas.</span>
+            </li>
+            <li>
+              <strong>2.</strong>
+              <span><strong>Impulsamos el arte local</strong> valorando el trabajo artesanal y creativo.</span>
+            </li>
+            <li>
+              <strong>3.</strong>
+              <span><strong>Fomentamos la sostenibilidad</strong> con productos decorativos de larga duración.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="impact-card">
+          <h3>Datos que nos llenan de luz:</h3>
+          <p>Gracias a ti, Encantos de Cristal ya ha logrado:</p>
+          <div class="impact-stats">
+            <span class="impact-pill">♻ Más de 100 botellas recicladas</span>
+            <span class="impact-pill">💡 +150 hogares iluminados</span>
+            <span class="impact-pill">🎁 Docenas de regalos personalizados</span>
+          </div>
+          <p style="margin-top: 0.7rem;">
+            Cada compra es una manera de apoyar el arte, el reciclaje y la magia de la Navidad.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <h2 class="section-title">
+        📍 Dónde encontrarnos
+        <span>Haz tu pedido navideño desde casa.</span>
+      </h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Canales de contacto</h3>
+          <div class="contact-row">
+            <span>📲</span>
+            <span><strong>WhatsApp:</strong> 926094787</span>
+          </div>
+          <div class="contact-row">
+            <span>📸</span>
+            <span><strong>Instagram / Facebook:</strong> @EncantosDeCristal</span>
+          </div>
+          <div class="contact-row">
+            <span>📧</span>
+            <span><strong>Correo:</strong> encantosdecristal@gmail.com</span>
+          </div>
+
+          <p style="margin-top: 0.9rem;">
+            Escríbenos para ver el catálogo completo de diseños, opciones de personalización,
+            colores disponibles y tiempos de entrega. También atendemos pedidos para empresas,
+            colegios y eventos especiales.
+          </p>
+
+          <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.6rem;">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/51926094787?text=Hola%20Encantos%20de%20Cristal,%20quiero%20informaci%C3%B3n%20sobre%20sus%20botellas%20navide%C3%B1as"
+              target="_blank"
+              rel="noopener"
+            >
+              Hablar por WhatsApp ahora
+            </a>
+            <a href="#inicio" class="btn btn-ghost">Volver al inicio</a>
+          </div>
+
+          <p class="tagline-bottom">
+            “Ilumina tus momentos con arte y sostenibilidad”.
+          </p>
+        </div>
+
+        <div class="contact-img">
+          <!-- USA UNA FOTO DE UNA BOTELLA ENCENDIDA EN UN AMBIENTE NAVIDEÑO -->
+          <img
+            src="img/botella-contacto.jpg"
+            alt="Botella de Encantos de Cristal iluminando un ambiente navideño"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Encantos de Cristal – Todos los derechos reservados.</div>
+      <div>Navidad sostenible, luces que cuentan historias 🎄✨</div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll suave para los enlaces del menú
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (targetId.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(targetId);
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
